@@ -1,0 +1,50 @@
+# created by git-ignore
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+*.*~
+*.d
+Makefile~
+makefile~
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+/example/*_bin
+
+# created by git-ignore
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+install_manifest.txt
+build
+doc
+Release
+.project
+.cproject
+/Debug
+
+*.sh
+*.bak
+*.*~
+data
+Debug
+Release
+.rawdata
+
