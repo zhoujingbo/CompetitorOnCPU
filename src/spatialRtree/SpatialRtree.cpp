@@ -88,7 +88,7 @@ void SpatialRtree::rangeQuery(vector<double>& low, vector<double>& high, vector<
 
 	stree->intersectsWithQuery(qr, qv);
 
-	cout<<"for debug: indexio:"<<qv.m_indexIO<<" leafio:"<<qv.m_leafIO<<endl;
+
 }
 
 void SpatialRtree::rangeQueries(vector<vector<double> >& lows, vector<vector<double> >& highs, vector<vector<id_type> >& res){

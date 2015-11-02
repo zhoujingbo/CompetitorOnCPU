@@ -55,10 +55,10 @@ public:
 
 	//used for reading query file
 	template<typename E>
-	void ReadFile(const char * fname, E (*atoX)(const char *), vector<vector<E> >& _data);
-	void ReadFileInt(const char * fname, vector<vector<int> >& _data);
-	void ReadFileFloat(const char* fname, vector<vector<float> >& _data);
-	void ReadFileDouble(const char* fname, vector<vector<double> >& _data);
+	void ReadFile(const char * fname, E (*atoX)(const char *), vector<vector<E> >& _data, int lineNum = -1);
+	void ReadFileInt(const char * fname, vector<vector<int> >& _data, int lineNum = -1);
+	void ReadFileFloat(const char* fname, vector<vector<float> >& _data, int lineNum = -1);
+	void ReadFileDouble(const char* fname, vector<vector<double> >& _data, int lineNum = -1);
 
 	template<typename E>
 	void ReadFile_byComma(const char * fname, E (*atoX)(const char *), vector<vector<E> >& _data);

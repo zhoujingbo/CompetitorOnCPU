@@ -131,13 +131,14 @@ template<typename E>
  * _data: output result
  */
 void DataProcess::ReadFile(const char * fname,
-		E (*atoX)(const char *), vector<vector<E> >& _data) {
+		E (*atoX)(const char *), vector<vector<E> >& _data, int lineNum) {
 
 	//vector<vector<E>*>* data = new vector<vector<E>*>;
 	string line;
 	ifstream ifile(fname);
 
 	_data.clear();
+
 
 	if (ifile.is_open()) {
 
@@ -153,6 +154,9 @@ void DataProcess::ReadFile(const char * fname,
 			}
 
 			_data.push_back(lv);
+			if(_data.size()>=lineNum){
+				break;
+			}
 		}
 	}
 
@@ -202,15 +206,15 @@ void DataProcess::ReadFile_byComma(const char * fname,
 /**
  * _data:output result
  */
-void DataProcess::ReadFileInt(const char * fname, vector<vector<int> >& _data) {
-	ReadFile(fname, &atoi,_data);
+void DataProcess::ReadFileInt(const char * fname, vector<vector<int> >& _data, int lineNum) {
+	ReadFile(fname, &atoi,_data, lineNum);
 }
 
 
 /**
  * _data:output result
  */
-void DataProcess::ReadFileFloat(const char* fname, vector<vector<float> >& _data){
+void DataProcess::ReadFileFloat(const char* fname, vector<vector<float> >& _data, int lineNum){
 
 	vector<vector<double> > data_db;
 
@@ -247,8 +251,8 @@ void DataProcess::ReadFileFloat_byCol(const char* fname, vector<vector<float> >&
 /**
  * _data:output result
  */
-void DataProcess::ReadFileDouble(const char* fname, vector<vector<double> >& _data){
-	ReadFile(fname, &atof,_data);
+void DataProcess::ReadFileDouble(const char* fname, vector<vector<double> >& _data, int lineNum){
+	ReadFile(fname, &atof,_data,lineNum);
 }
 
 /**
