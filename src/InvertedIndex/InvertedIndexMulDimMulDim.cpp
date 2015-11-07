@@ -5,17 +5,17 @@
  *      Author: zhoujingbo
  */
 
-#include "InvertedIndex.h"
+#include "InvertedIndexMulDimMulDim.h"
 
 #include <algorithm>
 #include <iostream>
 
-InvertedIndex::InvertedIndex() {
+InvertedIndexMulDim::InvertedIndexMulDim() {
 	// TODO Auto-generated constructor stub
 	valBits = 22;
 }
 
-InvertedIndex::~InvertedIndex() {
+InvertedIndexMulDim::~InvertedIndexMulDim() {
 	// TODO Auto-generated destructor stub
 }
 
@@ -26,7 +26,7 @@ T_KEY inline getKey(uint32 dim, uint32 val, uint32 valBits){
 	return key;
 }
 
-void InvertedIndex::buildIndex(vector<vector<int> > data){
+void InvertedIndexMulDim::buildIndex(vector<vector<int> > data){
 
 	std::map<T_KEY,vector<T_ID> >::iterator it;
 
@@ -47,7 +47,7 @@ void InvertedIndex::buildIndex(vector<vector<int> > data){
 }
 
 
-void InvertedIndex::scanIndex(vector<int>& queryLow, vector<int>& queryHigh, map<T_ID,uint32>& counter){
+void InvertedIndexMulDim::scanIndex(vector<int>& queryLow, vector<int>& queryHigh, map<T_ID,uint32>& counter){
 
 	std::map<T_KEY,vector<T_ID> >::iterator it;
 	std::map<T_ID,uint32>::iterator cit;
@@ -80,7 +80,7 @@ void InvertedIndex::scanIndex(vector<int>& queryLow, vector<int>& queryHigh, map
 
 }
 
-vector<pair<T_ID, uint32> > InvertedIndex::rangeQuery(vector<int>& queryLow, vector<int>& queryHigh, uint32 threshold){
+vector<pair<T_ID, uint32> > InvertedIndexMulDim::rangeQuery(vector<int>& queryLow, vector<int>& queryHigh, uint32 threshold){
 
 	map<T_ID,uint32> counter;
 	scanIndex(queryLow, queryHigh, counter);
@@ -98,7 +98,7 @@ vector<pair<T_ID, uint32> > InvertedIndex::rangeQuery(vector<int>& queryLow, vec
 	return res;
 }
 
-vector<pair<T_ID, uint32> > InvertedIndex::rangeQuery(vector<int>& query, int range, uint32 threshold){
+vector<pair<T_ID, uint32> > InvertedIndexMulDim::rangeQuery(vector<int>& query, int range, uint32 threshold){
 
 	vector<int> queryLow(query.size());
 	vector<int> queryHigh(query.size());
@@ -111,7 +111,7 @@ vector<pair<T_ID, uint32> > InvertedIndex::rangeQuery(vector<int>& query, int ra
 	return rangeQuery(queryLow, queryHigh, threshold);
 }
 
-vector<pair<T_ID, uint32> > InvertedIndex::topkQuery(vector<int>& query, int range, uint32 k){
+vector<pair<T_ID, uint32> > InvertedIndexMulDim::topkQuery(vector<int>& query, int range, uint32 k){
 
 	vector<int> queryLow(query.size());
 	vector<int> queryHigh(query.size());
@@ -131,7 +131,7 @@ bool compfunc(pair<const T_ID, uint32> const & l,
          return l.second > r.second;
  }
 
-vector<pair<T_ID, uint32> > InvertedIndex::topkQuery(vector<int>& queryLow, vector<int>& queryHigh, uint32 k){
+vector<pair<T_ID, uint32> > InvertedIndexMulDim::topkQuery(vector<int>& queryLow, vector<int>& queryHigh, uint32 k){
 
 	map<T_ID,uint32> counter;
 	scanIndex(queryLow, queryHigh, counter);
@@ -149,7 +149,7 @@ vector<pair<T_ID, uint32> > InvertedIndex::topkQuery(vector<int>& queryLow, vect
 	return topk;
 }
 
-vector<vector<pair<T_ID, uint32> > > InvertedIndex::topkQueries(vector<vector<int> >& queriesLow,
+vector<vector<pair<T_ID, uint32> > > InvertedIndexMulDim::topkQueries(vector<vector<int> >& queriesLow,
 		vector<vector<int> >& queriesHigh, uint32 k){
 
 	vector<vector<pair<T_ID, uint32> > > res;
@@ -159,7 +159,7 @@ vector<vector<pair<T_ID, uint32> > > InvertedIndex::topkQueries(vector<vector<in
 	return res;
 }
 
-vector<vector<pair<T_ID, uint32> > > InvertedIndex::topkQueries(vector<vector<int> >& queries,
+vector<vector<pair<T_ID, uint32> > > InvertedIndexMulDim::topkQueries(vector<vector<int> >& queries,
 		int range, uint32 k){
 
 	vector<vector<pair<T_ID, uint32> > > res;
@@ -169,7 +169,7 @@ vector<vector<pair<T_ID, uint32> > > InvertedIndex::topkQueries(vector<vector<in
 	return res;
 }
 
-vector<vector<pair<T_ID, uint32> > > InvertedIndex::rangeQueries(vector<vector<int> >& queriesLow,
+vector<vector<pair<T_ID, uint32> > > InvertedIndexMulDim::rangeQueries(vector<vector<int> >& queriesLow,
 		vector<vector<int> >& queriesHigh, uint32 threshold){
 
 	vector<vector<pair<T_ID, uint32> > > res;
@@ -181,7 +181,7 @@ vector<vector<pair<T_ID, uint32> > > InvertedIndex::rangeQueries(vector<vector<i
 }
 
 
-vector<vector<pair<T_ID, uint32> > > InvertedIndex::rangeQueries(vector<vector<int> >& query,
+vector<vector<pair<T_ID, uint32> > > InvertedIndexMulDim::rangeQueries(vector<vector<int> >& query,
 		int range, uint32 threshold){
 	vector<vector<pair<T_ID, uint32> > > res;
 		for(uint32 i=0;i<query.size();i++){

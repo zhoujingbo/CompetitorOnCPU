@@ -5,8 +5,8 @@
  *      Author: zhoujingbo
  */
 
-#ifndef INVERTEDINDEX_INVERTEDINDEX_H_
-#define INVERTEDINDEX_INVERTEDINDEX_H_
+#ifndef INVERTEDINDEX_INVERTEDINDEXMULDIMMULDIM_H_
+#define INVERTEDINDEX_INVERTEDINDEXMULDIMMULDIM_H_
 
 #include <vector>
 #include <map>
@@ -21,10 +21,10 @@ typedef unsigned int T_ID;
 typedef unsigned int uint32;
 
 
-class InvertedIndex {
+class InvertedIndexMulDim {
 public:
-	InvertedIndex();
-	virtual ~InvertedIndex();
+	InvertedIndexMulDim();
+	virtual ~InvertedIndexMulDim();
 
 	void buildIndex(vector<vector<int> > data);
 
@@ -53,4 +53,4 @@ private:
 	uint32 valBits;
 };
 
-#endif /* INVERTEDINDEX_INVERTEDINDEX_H_ */
+#endif /* INVERTEDINDEX_INVERTEDINDEXMULDIMMULDIM_H_ */

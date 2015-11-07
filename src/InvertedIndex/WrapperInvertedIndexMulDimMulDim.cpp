@@ -5,23 +5,22 @@
  *      Author: zhoujingbo
  */
 
-#include "WrapperInvertedIndex.h"
+#include "WrapperInvertedIndexMulDimMulDim.h"
 
 #include <vector>
 #include <iostream>
 #include <time.h>
 #include <sys/time.h>
 
-#include "InvertedIndex.h"
-
 #include "../tools/DataProcess.h"
+#include "InvertedIndexMulDimMulDim.h"
 
-WrapperInvertedIndex::WrapperInvertedIndex() {
+WrapperInvertedIndexMulDim::WrapperInvertedIndexMulDim() {
 	// TODO Auto-generated constructor stub
 
 }
 
-WrapperInvertedIndex::~WrapperInvertedIndex() {
+WrapperInvertedIndexMulDim::~WrapperInvertedIndexMulDim() {
 	// TODO Auto-generated destructor stub
 }
 
@@ -31,7 +30,7 @@ WrapperInvertedIndex::~WrapperInvertedIndex() {
 
 void topkQuery(vector<vector<int> >& data, vector<vector<int> >& queries, int range, uint k){
 
-	InvertedIndex invIdx;
+	InvertedIndexMulDim invIdx;
 
 	struct timeval tim;
 	double t_start, t_end;
@@ -55,7 +54,7 @@ void topkQuery(vector<vector<int> >& data, vector<vector<int> >& queries, int ra
 
 void rangeQuery(vector<vector<int> >& data, vector<vector<int> >& queries, int range, int threshold){
 
-	InvertedIndex invIdx;
+	InvertedIndexMulDim invIdx;
 
 	struct timeval tim;
 	double t_start, t_end;
@@ -95,9 +94,9 @@ void topkQueryonData(){
 	dp.ReadFileInt(dataFile.c_str(), queries, 10);
 	cout<<"end loading data"<<endl;
 	topkQuery(data, queries,range,topk);
-
-
 }
+
+
 
 void rangeQueryOnData(){
 	string prefix = "/media/hd1/home/zhoujingbo/data/";
@@ -118,10 +117,15 @@ void rangeQueryOnData(){
 	rangeQuery(data, queries,range,threshold);
 }
 
-void WrapperInvertedIndex:: run_topk(){
+void WrapperInvertedIndexMulDim:: run_range(){
 	//test_toy();
-
-	//topkQueryonData();
 	rangeQueryOnData();
+
+}
+
+void WrapperInvertedIndexMulDim:: run_topk(){
+	//test_toy();
+	topkQueryonData();
+
 
 }

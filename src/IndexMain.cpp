@@ -10,15 +10,19 @@
 using namespace std;
 
 #include "spatialRtree/WrapperSpatialRtree.h"
-#include "InvertedIndex/WrapperInvertedIndex.h"
+#include "InvertedIndex/WrapperInvertedIndexMulDimMulDim.h"
+#include "InvertedIndex/WrapperInvertedIndexTweet.h"
 
 int main() {
 
 	//WrapperSpatialRtree wsr;
 	//wsr.run_spatialRtree();
 
-	WrapperInvertedIndex wii;
-	wii.run_topk();
+	//WrapperInvertedIndexMulDim wii;
+	//wii.run_topk();
+
+	WrapperInvertedIndexTweet wit;
+	wit.run_topk();
 
 
 
